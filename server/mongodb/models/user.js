@@ -1,13 +1,12 @@
 'use strict';
 
 const mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    autoIncrementPlugin = require('../config').getAutoIncPlugin();
 
 let UserSchema = new Schema({
-
     id: {
-        type: String,
-        required: true,
+        type: Number,
         unique: true
     },
 
@@ -34,6 +33,13 @@ let UserSchema = new Schema({
 
 UserSchema.pre('save', function(next){
     next();
+});
+
+UserSchema.plugin(autoIncrementPlugin, {
+    model: 'User',
+    field: 'id',
+    startAt: 1,
+    incrementBy: 1
 });
 
 
