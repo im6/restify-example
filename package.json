@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/jinouwuque/rest#readme",
   "dependencies": {
+    "glob": "^7.0.6",
+    "mongoose": "^4.6.0",
     "restify": "^4.1.1"
   },
   "devDependencies": {

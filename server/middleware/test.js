@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-    test: function(req, res, next){
+    root: function(req, res, next){
         res.send({
             msg: "test success!"
         });
