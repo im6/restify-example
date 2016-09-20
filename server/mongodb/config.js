@@ -30,15 +30,7 @@ module.exports = {
             console.log('Mongoose connected successfully!');
             privateFn.loadModels();
             /*============================   do sth   ========================================*/
-            //var Chart = mongoose.model('Chart');
-            //
-            //var char1 = new Chart({});
-            //
-            //char1.save().then((data) =>{
-            //    console.log(data);
-            //}, (data) =>{
-            //    console.error(data);
-            //});
+
 
 
             /*============================   do End   ========================================*/

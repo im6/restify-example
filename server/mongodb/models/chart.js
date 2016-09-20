@@ -36,5 +36,3 @@ ChartSchema.plugin(autoIncrementPlugin, {
 
 
 mongoose.model('Chart', ChartSchema);
-
-

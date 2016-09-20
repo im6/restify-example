@@ -11,7 +11,7 @@ module.exports = {
         if(globalConfig.isDev){
             next();
         }else{
-            if(req.headers.sk === globalConfig.secretKey){
+            if(req.url=== '/' ||  req.headers.sk === globalConfig.secretKey){
                 next();
             }else{
                 res.json({
