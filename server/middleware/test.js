@@ -35,6 +35,7 @@ module.exports = {
         return next();
     },
     echo: function(req, res, next){
+        console.log('come to echo');
         res.send(req.params);
         return next();
     }

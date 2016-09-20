@@ -3,7 +3,7 @@
 const testCtr = require('./middleware/test');
 
 module.exports = {
-    bindAction: function(server){
+    bindAction: (server) => {
         server.get('/', testCtr.root);
         server.get('/echo/:name', testCtr.echo);
     }

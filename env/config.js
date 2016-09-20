@@ -9,4 +9,5 @@ module.exports = {
     serverIp: env.NODE_IP || '127.0.0.1',
     requireAuth: true,
     mongodbUrl: env.mongodbUrl,
+    secretKey: env.secretKey
 };
