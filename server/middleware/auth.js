@@ -8,17 +8,13 @@ const privateFn = {
 
 module.exports = {
     check: function(req, res, next){
-        if(globalConfig.isDev){
+        if(req.url=== '/' ||  req.headers.sk === globalConfig.secretKey){
             next();
         }else{
-            if(req.url=== '/' ||  req.headers.sk === globalConfig.secretKey){
-                next();
-            }else{
-                res.json({
-                    error: true,
-                    msg: 'unAuth'
-                });
-            }
+            res.json({
+                error: true,
+                msg: 'unAuth'
+            });
         }
 
         return;

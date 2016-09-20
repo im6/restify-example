@@ -1,5 +1,5 @@
 "use strict";
-const env = process.env,
+const globalConfig = require('../env/config'),
     restify = require('restify'),
     route = require('../server/route'),
     mongo = require('../server/mongodb/config'),
@@ -13,13 +13,16 @@ var server = restify.createServer({
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
 server.use(restify.bodyParser());
-server.use(authMd.check);
+if(globalConfig.requireAuth){
+    server.use(authMd.check);
+}
 
 route.bindAction(server);
 
 mongo.initial();
 
 
-server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
+server.listen(globalConfig.serverPort, globalConfig.serverIp, function () {
+    console.log(`application is running at ${globalConfig.serverIp}:${globalConfig.serverPort}`);
     console.log(`Application worker ${process.pid} started...`);
 });
