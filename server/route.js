@@ -10,13 +10,12 @@ module.exports = {
         server.get('/echo/:name', testCtr.echo);
 
         server.get('/user', userCtr.getUser);
-        server.delete('/user', userCtr.deleteUser);
+        server.del('/user', userCtr.deleteUser);
         server.post('/user', userCtr.updateUser);
         server.post('/user/new', userCtr.createUser);
 
-
         server.get('/chart', chartCtr.getChart);
-        server.delete('/chart', chartCtr.deleteChart);
+        server.del('/chart', chartCtr.deleteChart);
         server.post('/chart', chartCtr.updateChart);
         server.post('/chart/new', chartCtr.createChart);
 

@@ -21,6 +21,7 @@ module.exports = {
         }, (data) =>{
             res.json(helper.resFailObj(data));
         });
+        return next();
     },
     getChart: function(req, res, next){
         var Chart = mongoose.model('Chart');
@@ -29,10 +30,12 @@ module.exports = {
         }, (data)=>{
             res.json(helper.resFailObj(data));
         });
+        return next();
 
     },
     updateChart: function(req, res, next){
         res.send(req.params);
+        return next();
     },
     deleteChart: function(req, res, next){
         var Chart = mongoose.model('Chart');
@@ -41,5 +44,6 @@ module.exports = {
         }, (data)=>{
             res.json(helper.resFailObj(data));
         });
+        return next();
     }
 };

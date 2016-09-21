@@ -27,6 +27,8 @@ module.exports = {
             console.error(err);
         });
 
+        return next();
+
     },
     getUser: function(req, res, next){
         var User = mongoose.model('User');
@@ -35,11 +37,14 @@ module.exports = {
         }, (data)=>{
             res.send(helper.resFailObj(data));
         });
+        return next();
     },
     updateUser: function(req, res, next){
         res.send(req.params);
+        return next();
     },
     deleteUser: function(req, res, next){
         res.send(req.params);
+        return next();
     }
 };
