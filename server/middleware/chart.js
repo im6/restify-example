@@ -10,40 +10,36 @@ const privateFn = {
 module.exports = {
     createChart: function(req, res, next){
         var Chart = mongoose.model('Chart');
-
-        var char1 = new Chart({});
-
-        char1.save().then((data) =>{
-            console.log(data);
-            res.send({
-                error: false
-            });
-        }, (data) =>{
-            res.send({
-                error: true,
-                detail: err
-            });
-            console.error(err);
+        let bodyObj = req.body;
+        var char1 = new Chart({
+            userId: bodyObj.userId,
+            obj: bodyObj.obj
         });
 
-        return next();
+        char1.save().then((data) =>{
+            res.json(helper.resSuccessObj(data));
+        }, (data) =>{
+            res.json(helper.resFailObj(data));
+        });
     },
     getChart: function(req, res, next){
         var Chart = mongoose.model('Chart');
-        Chart.find({id: req.query.id}).then((data)=>{
-            res.send(helper.resSuccessObj(data));
+        Chart.find({userId: req.query.userId}).then((data)=>{
+            res.json(helper.resSuccessObj(data));
         }, (data)=>{
-            res.send(helper.resFailObj(data));
+            res.json(helper.resFailObj(data));
         });
 
-        return next();
     },
     updateChart: function(req, res, next){
         res.send(req.params);
-        return next();
     },
     deleteChart: function(req, res, next){
-        res.send(req.params);
-        return next();
+        var Chart = mongoose.model('Chart');
+        Chart.find({ userId: 0 }).remove().then((data) =>{
+            res.json(helper.resSuccessObj(data));
+        }, (data)=>{
+            res.json(helper.resFailObj(data));
+        });
     }
 };
