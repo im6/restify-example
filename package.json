@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jinouwuque/rest#readme",
   "dependencies": {
     "glob": "^7.0.6",
+    "moment": "^2.15.1",
     "mongoose": "^4.6.0",
     "mongoose-auto-increment": "^5.0.1",
     "restify": "^4.1.1"

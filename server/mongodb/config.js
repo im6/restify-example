@@ -17,7 +17,6 @@ let privateFn = {
 };
 
 
-
 module.exports = {
     initial:() => {
         //var connection = mongoose.createConnection(globalConfig.mongodbUrl);
@@ -32,6 +31,14 @@ module.exports = {
             /*============================   do sth   ========================================*/
 
 
+          //var SM = mongoose.model('Chart');
+          //var s1 = new SM({
+          //  userId: 1,
+          //  title: 'my first chart',
+          //  series: [1,2]
+          //});
+          //
+          //s1.save();
 
             /*============================   do End   ========================================*/
 

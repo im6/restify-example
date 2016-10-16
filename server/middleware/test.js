@@ -1,5 +1,6 @@
 "use strict";
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+  globalConfig = require('../../env/config.js');
 
 const privateFn = {
     getMongoStatus: (stateId) => {
@@ -30,6 +31,7 @@ module.exports = {
         res.send({
             msg: "test success!",
             db: privateFn.getMongoStatus(stateId),
+          deployTime: globalConfig.deployTime
 
         });
         return next();

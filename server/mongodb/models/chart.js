@@ -5,21 +5,42 @@ const mongoose = require('mongoose'),
     autoIncrementPlugin = require('../config').getAutoIncPlugin();
 
 let ChartSchema = new Schema({
+  id: {
+      type: Number,
+      required: true
+  },
 
-    id: {
-        type: Number,
-        required: true
-    },
+  userId: {
+      type: Number,
+      required: true
+  },
 
-    userId: {
-        type: Number,
-        required: true
-    },
+  js: {
+    type: String,
+    default: "echarts", // echarts/highcharts/d3/chartjs
+  },
 
-    obj: {
-        type: Object,
-        required: true
-    }
+  title: {
+      type: String,
+      required: true
+  },
+
+  subtitle: {
+    type: String
+  },
+
+  xTitle:{
+    type: String
+  },
+
+  yTitle:{
+    type: String
+  },
+
+  series:{
+    type: Array,
+    required: true
+  }
 });
 
 
