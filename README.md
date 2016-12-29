@@ -1,1 +1,1 @@
-# a very simple example for seting up restify.js
+# a very simple example for setting up restify.js
