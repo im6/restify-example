@@ -1,23 +1,67 @@
 package com.colorpk.vp3.models;
 
-import java.util.Date;
+import java.sql.Timestamp;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
 
+@Entity
+@Table(name = "colorpk_color")
 public class Color {
-  public final int id;
-  public final int like;
-  public final String color;
-  public final String userId;
-  public final String username;
-  public final Date createdDate;
+  @Id
+  @GeneratedValue
+  @Column(name = "id")
+  private Integer id;
 
-  public Boolean display;
+  @Column(name = "like")
+  private Integer like;
 
-  public Color(int id, int like, String color, String userId, String username, Date createdDate) {
-    this.id = id;
-    this.like = like;
-    this.color = color;
-    this.userId = userId;
-    this.username = username;
-    this.createdDate = createdDate;
+  @Column(name = "color")
+  private String color;
+
+  @Column(name = "userid")
+  private Integer userId;
+
+  @Column(name = "username")
+  private String username;
+
+  @Column(name = "createdate")
+  private Timestamp createDate;
+
+  @Column(name = "display")
+  private Boolean display;
+
+  public Color() {
   }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public Integer getLike() {
+    return like;
+  }
+
+  public String getColor() {
+    return color;
+  }
+
+  public Integer getUserId() {
+    return userId;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public Timestamp getCreateDate() {
+    return createDate;
+  }
+
+  public Boolean getDisplay() {
+    return display;
+  }
+
 }
