@@ -37,7 +37,7 @@ func handleUnlikeColor(cxt *gin.Context) {
 	})
 }
 
-var port = ":8080"
+const port = ":8080"
 
 func main() {
 	r := gin.Default()
