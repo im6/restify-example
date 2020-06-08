@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-
+{{define "head"}}
 <head>
   <title>
     Welcome
@@ -61,60 +59,4 @@
     }
   </script>
 </head>
-
-<body>
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LX6LV3" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  <header>
-    <nav>
-      <a href="/popular">Popular</a>
-      <a href="/latest">Latest</a>
-      <a href="/new" class="createBtn">Create</a>
-      <a href="/about" class="aboutBtn">About</a>
-      <a href="http://react.colorpk.com/new" target="_blank" class="reactCreateBtn">Create</a>
-      <a href="/signin" class="nav-auth">Sign In</a>
-    </nav>
-    <div style="clear: both;"></div>
-  </header>
-  <div class="main">
-
-    <div class="help">
-      <p>
-        Dear ColorPK User: <br />
-        You've just found the best ColorPicker. It is free, fast and more
-        importantly, open-source. So, welcome!<br />
-        Feel free to fiddle out whatever <em>Color Palette</em> in your mind, and
-        share with others. <br />
-        It is a Social Platform after all :)
-        <a href="javascript:_colorpk.removeWelcome()" style="margin-left: 13px; display: none;">Dismiss</a>
-        <br /><br />
-        For multilingual support, please go to
-        <a href="//react.colorpk.com">
-          <em>
-            ColorPK version 1
-          </em>
-        </a>
-      </p>
-    </div>
-    <div class="list"></div>
-
-    <script>
-      window._colorpk = {
-        staticPath: '//dkny.oss-cn-hangzhou.aliyuncs.com/4/',
-        auth: false,
-        load0: Date.now(),
-
-        likes: [],
-        initData: {{ .data }}
-      };
-    </script>
-
-  </div>
-  <input type='hidden' name='csrfmiddlewaretoken'
-    value='EXhwZ5Nlmz10PmQgrLQpAKXRPxewrEibCOUUoVDwOpjHkB3nQbiPXdAJDiIks7zH' />
-  <script src="//dkny.oss-cn-hangzhou.aliyuncs.com/4/bundle0.js?a57"></script>
-</body>
-
-</html>
+{{end}}
