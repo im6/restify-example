@@ -17,7 +17,7 @@ func Load(r *gin.Engine) *gin.Engine {
 		c.String(http.StatusNotFound, "The incorrect API route.")
 	})
 
-	r.LoadHTMLGlob("views/*.html")
+	r.LoadHTMLGlob("views/*.tmpl")
 
 	// view handler
 	r.GET("/", controllers.LatestPage)

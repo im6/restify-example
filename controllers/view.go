@@ -18,7 +18,7 @@ func LatestPage(cxt *gin.Context) {
 	if err != nil {
 		panic(err)
 	}
-	cxt.HTML(http.StatusOK, "main.html", gin.H{
+	cxt.HTML(http.StatusOK, "main.tmpl", gin.H{
 		"data": template.JS(colorJSON),
 	})
 }
@@ -31,7 +31,7 @@ func PopularPage(cxt *gin.Context) {
 	if err != nil {
 		panic(err)
 	}
-	cxt.HTML(http.StatusOK, "main.html", gin.H{
+	cxt.HTML(http.StatusOK, "main.tmpl", gin.H{
 		"data": template.JS(colorJSON),
 	})
 }
