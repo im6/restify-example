@@ -2,4 +2,4 @@
 
 [![logo](https://github.com/im6/vp3/blob/master/static/logo.png 'colorpk.com')](https://www.colorpk.com)
 
-## An web app written with `NO javascript framework`
+## A Go Web app.

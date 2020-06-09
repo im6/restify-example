@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-{{template "head"}}
+{{template "head" .}}
 <body>
   {{template "header"}}
   <div class="main">
@@ -18,7 +18,7 @@
   </div>
   <input type='hidden' name='csrfmiddlewaretoken'
     value='EXhwZ5Nlmz10PmQgrLQpAKXRPxewrEibCOUUoVDwOpjHkB3nQbiPXdAJDiIks7zH' />
-  <script src="//dkny.oss-cn-hangzhou.aliyuncs.com/4/bundle0.js?a57"></script>
+  <script src="//dkny.oss-cn-hangzhou.aliyuncs.com/4/{{.assetName}}.js?{{.version}}"></script>
 </body>
 
 </html>

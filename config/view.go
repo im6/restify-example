@@ -15,5 +15,11 @@ func InitTemplate(r *gin.Engine) *gin.Engine {
 			"templates/shared/help-banner.tmpl",
 			"templates/main.tmpl",
 		)))
+	r.SetHTMLTemplate(template.Must(
+		template.ParseFiles(
+			"templates/shared/head.tmpl",
+			"templates/shared/header.tmpl",
+			"templates/one-color.tmpl",
+		)))
 	return r
 }
