@@ -20,7 +20,7 @@ func LatestPage(cxt *gin.Context) {
 	if err != nil {
 		panic(err)
 	}
-	cxt.HTML(http.StatusOK, "main.tmpl", gin.H{
+	cxt.HTML(http.StatusOK, "main", gin.H{
 		"data":      template.JS(colorJSON),
 		"assetName": "bundle0",
 		"version":   version,
@@ -35,7 +35,7 @@ func PopularPage(cxt *gin.Context) {
 	if err != nil {
 		panic(err)
 	}
-	cxt.HTML(http.StatusOK, "main.tmpl", gin.H{
+	cxt.HTML(http.StatusOK, "main", gin.H{
 		"data":      template.JS(colorJSON),
 		"assetName": "bundle0",
 		"version":   version,
@@ -51,7 +51,7 @@ func OneColorPage(cxt *gin.Context) {
 	if err != nil {
 		panic(err)
 	}
-	cxt.HTML(http.StatusOK, "one-color.tmpl", gin.H{
+	cxt.HTML(http.StatusOK, "one-color", gin.H{
 		"data":      template.JS(colorJSON),
 		"assetName": "bundle3",
 		"version":   version,
