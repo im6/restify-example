@@ -57,3 +57,12 @@ func OneColorPage(cxt *gin.Context) {
 		"version":   version,
 	})
 }
+
+// CreatePage view
+func CreatePage(cxt *gin.Context) {
+	cxt.HTML(http.StatusOK, "create", gin.H{
+		"assetName":    "bundle2",
+		"version":      version,
+		"defaultValue": cxt.Query("c"),
+	})
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+{{template "head" .}}
+<body>
+  {{template "header"}}
+  <div class="main">
+    <h3>Create a Color Palette:</h3>
+    <div class="canvas">
+        <button class="jscolor" data-jscolor="{onFineChange: '_cpOnColorChange(this)', valueElement: null, position:'right'}"></button>
+        <button class="jscolor" data-jscolor="{onFineChange: '_cpOnColorChange(this)', valueElement: null, position:'right'}"></button>
+        <button class="jscolor" data-jscolor="{onFineChange: '_cpOnColorChange(this)', valueElement: null, position:'right'}"></button>
+        <button class="jscolor" data-jscolor="{onFineChange: '_cpOnColorChange(this)', valueElement: null, position:'right'}"></button>
+    </div>
+    <div class="btnGrp">
+        <label for="colorText">#</label>
+        <input id="colorText" type="text">
+        <br><br>
+        <button id="createBtn" class="btn btn-primary" style="margin-right: 7px;">
+            Create
+        </button>
+        <button id="resetBtn" class="btn">
+            Reset
+        </button>
+    </div>
+    <script>
+      window._colorpk = {
+        staticPath: '//dkny.oss-cn-hangzhou.aliyuncs.com/4/',
+        auth: false,
+        load0: Date.now(),
+        defaultColors: {{ .defaultValue }},
+      };
+    </script>
+  </div>
+  <input type='hidden' name='csrfmiddlewaretoken'
+    value='EXhwZ5Nlmz10PmQgrLQpAKXRPxewrEibCOUUoVDwOpjHkB3nQbiPXdAJDiIks7zH' />
+  <script src="//dkny.oss-cn-hangzhou.aliyuncs.com/4/{{.assetName}}.js?{{.version}}"></script>
+</body>
+
+</html>
