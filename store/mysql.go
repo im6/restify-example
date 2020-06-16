@@ -11,8 +11,8 @@ import (
 // DB is the db connection instance
 var DB *gorm.DB
 
-// ConnectDataBase init conn
-func ConnectDataBase() {
+// ConnectMySQL init conn
+func ConnectMySQL() {
 	conn := fmt.Sprintf("%s:%s@(%s)/%s?charset=utf8&parseTime=True&loc=Local",
 		os.Getenv("SQL_USERNAME"),
 		os.Getenv("SQL_PASSWORD"),

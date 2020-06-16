@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"html/template"
 	"net/http"
 
@@ -16,6 +17,18 @@ const version = "b12"
 func LatestPage(cxt *gin.Context) {
 	colors := []models.Color{}
 	store.DB.Table("colorpk_color").Order("createdate desc").Where("display = 0").Find(&colors)
+
+	err := store.RedisDB.Set("helloworldkey", "hello123", 0).Err()
+	if err != nil {
+		panic(err)
+	}
+
+	val, err := store.RedisDB.Get("helloworldkey").Result()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("key", val)
+
 	colorJSON, err := json.Marshal(colors)
 	if err != nil {
 		panic(err)

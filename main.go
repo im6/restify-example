@@ -13,7 +13,9 @@ func main() {
 
 	config.InitTemplate(r)
 	config.InitRoute(r)
-	store.ConnectDataBase()
+
+	store.ConnectMySQL()
+	store.ConnectRedis()
 
 	r.Run(port)
 }
