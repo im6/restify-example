@@ -11,7 +11,7 @@ import (
 	"github.com/im6/vp3/store"
 )
 
-const version = "b12"
+const version = "v0.0.6"
 
 // LatestPage view
 func LatestPage(cxt *gin.Context) {

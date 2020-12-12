@@ -6,7 +6,7 @@ import (
 	"github.com/im6/vp3/store"
 )
 
-const port = ":8080"
+const port = ":3000"
 
 func main() {
 	r := gin.Default()
