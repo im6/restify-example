@@ -26,6 +26,10 @@ func createMyRender() multitemplate.Renderer {
 		"templates/shared/head.tmpl",
 		"templates/shared/header.tmpl",
 	)
+	r.AddFromFiles(
+		"error",
+		"templates/error.tmpl",
+	)
 	return r
 }
 
