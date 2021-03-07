@@ -9,7 +9,7 @@ import (
 	"github.com/im6/vp3/models"
 )
 
-const version = "v0.0.6"
+const version = "v0.0.7"
 
 // LatestPage view
 func LatestPage(ctx *gin.Context) {

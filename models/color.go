@@ -1,88 +1,63 @@
 package models
 
 import (
-	"time"
-	"strings"
+	"fmt"
+	"errors"
 	"context"
 	"github.com/im6/vp3/store"
-	"cloud.google.com/go/firestore"
-	"google.golang.org/api/iterator"
 )
 
 // Color is definition
 type Color struct {
-	Id         string     `json:"id"`
-	Star       int64      `json:"like"`
-	Colors     string     `json:"color"`
-	Author     string     `json:"username"`
-	Hidden     bool       `json:"hidden"`
-	Created    time.Time  `json:"createdate"`
+	Id    string  `json:"k"`
+	Star  int64   `json:"s"`
+	Color string  `json:"v"`
 }
 
 // Get color collection from DB
 func GetColors(ctx context.Context, queryType string) ([]Color, error) {
-	client := store.CreateSqlClient(ctx)
-	var iter *firestore.DocumentIterator
-	
+	var orderByField string
 	switch queryType {
-	case "latest":
-		iter = client.Collection("colors").Documents(ctx)
-	case "popular":
-		iter = client.Collection("colors").OrderBy("star", firestore.Desc).Documents(ctx)
+		case "latest":
+			orderByField = "id"
+	  case "popular":
+			orderByField = "star"
 	}
-
+	queryStr := fmt.Sprintf(
+		"SELECT id, color, star FROM colorpk_color WHERE display = 0 ORDER BY %s desc",
+		orderByField,
+	)
 	var colors []Color
-	for {
-		doc, err := iter.Next()
-		if err == iterator.Done {
-			break
-		}
+	db := store.GetDbConnection()
+	rows, err := db.Query(queryStr)
+	defer rows.Close()
+	if err != nil {
+		return nil, err
+	}
+	for rows.Next() {
+	  var c Color
+		err = rows.Scan(&c.Id, &c.Color, &c.Star)
 		if err != nil {
 			return nil, err
 		}
-		colorDict := doc.Data()
-		colorInterface := colorDict["v"].([]interface{})
-		colorStrArr := make([]string, len(colorInterface))
-		for i, v := range colorInterface {
-			colorStrArr[i] = v.(string)
-		}
-		colorStr := strings.Join(colorStrArr, "#")
-    colorIns := Color{
-			Id: doc.Ref.ID,
-			Star: colorDict["star"].(int64),
-			Author: colorDict["author"].(string),
-			Hidden: colorDict["hidden"].(bool),
-			Created: colorDict["created"].(time.Time),
-			Colors: colorStr,
-		}
-		colors = append(colors, colorIns)
-	}
-
+		colors = append(colors, c)
+  }
 	return colors, nil
 }
 
 
-func GetOneColor(ctx context.Context, docId string) (*Color, error) {
-	client := store.CreateSqlClient(ctx)
-	doc, err := client.Collection("colors").Doc(docId).Get(ctx)
-	if err != nil {
-		return nil, err
+func GetOneColor(ctx context.Context, colorId string) (*Color, error) {
+	db := store.GetDbConnection()
+	rows, err := db.Query("SELECT id, color, star FROM colorpk_color WHERE id = ?", colorId)
+	defer rows.Close()
+  if rows.Next() {
+	  var c Color
+		err = rows.Scan(&c.Id, &c.Color, &c.Star)
+		if err != nil {
+			return nil, err
+		}
+		return &c, nil
+  } else {
+		return nil, errors.New("invalid color id")
 	}
-	colorDict := doc.Data()
-	colorInterface := colorDict["v"].([]interface{})
-	colorStrArr := make([]string, len(colorInterface))
-	for i, v := range colorInterface {
-		colorStrArr[i] = v.(string)
-	}
-	colorStr := strings.Join(colorStrArr, "#")
-	colorIns :=  &Color{
-		Id: docId,
-		Star: colorDict["star"].(int64),
-		Author: colorDict["author"].(string),
-		Hidden: colorDict["hidden"].(bool),
-		Created: colorDict["created"].(time.Time),
-		Colors: colorStr,
-	}
-
-	return colorIns, nil
 }
