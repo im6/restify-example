@@ -3,19 +3,18 @@ package models
 import (
 	"fmt"
 	"errors"
-	"context"
 	"github.com/im6/vp3/store"
 )
 
 // Color is definition
 type Color struct {
-	Id    string  `json:"k"`
+	Id    int64  `json:"k"`
 	Star  int64   `json:"s"`
 	Color string  `json:"v"`
 }
 
 // Get color collection from DB
-func GetColors(ctx context.Context, queryType string) ([]Color, error) {
+func GetColors(queryType string) ([]Color, error) {
 	var orderByField string
 	switch queryType {
 		case "latest":
@@ -45,8 +44,7 @@ func GetColors(ctx context.Context, queryType string) ([]Color, error) {
 	return colors, nil
 }
 
-
-func GetOneColor(ctx context.Context, colorId string) (*Color, error) {
+func GetOneColor(colorId string) (*Color, error) {
 	db := store.GetDbConnection()
 	rows, err := db.Query("SELECT id, color, star FROM colorpk_color WHERE id = ?", colorId)
 	defer rows.Close()
@@ -60,4 +58,17 @@ func GetOneColor(ctx context.Context, colorId string) (*Color, error) {
   } else {
 		return nil, errors.New("invalid color id")
 	}
+}
+
+func IncrementColorStar(id int64) (error) {
+	db := store.GetDbConnection()
+	res, err := db.Exec("UPDATE colorpk_color SET star = star + 1 WHERE id = ?", id)
+	if err != nil {
+    return err
+	}
+	rowNum, err := res.RowsAffected()
+	if rowNum != 1 {
+		return errors.New("invalid multiple update")
+	}
+	return nil
 }

@@ -13,7 +13,7 @@ const version = "v0.0.7"
 
 // LatestPage view
 func LatestPage(ctx *gin.Context) {
-	colors, err := models.GetColors(ctx, "latest")
+	colors, err := models.GetColors("latest")
 	colorJSON, err := json.Marshal(colors)
 	if err != nil {
 		panic(err)
@@ -27,7 +27,7 @@ func LatestPage(ctx *gin.Context) {
 
 // PopularPage view
 func PopularPage(ctx *gin.Context) {
-	colors, err := models.GetColors(ctx, "popular")
+	colors, err := models.GetColors("popular")
 	colorJSON, err := json.Marshal(colors)
 	if err != nil {
 		panic(err)
@@ -42,7 +42,7 @@ func PopularPage(ctx *gin.Context) {
 // OneColorPage view
 func OneColorPage(ctx *gin.Context) {
 	id := ctx.Param("id")
-	color, err := models.GetOneColor(ctx, id)
+	color, err := models.GetOneColor(id)
 	if err != nil {
 		ctx.HTML(http.StatusNotFound, "error", gin.H{})
 		return
