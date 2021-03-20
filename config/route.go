@@ -25,6 +25,7 @@ func InitRoute(r *gin.Engine) *gin.Engine {
 	r.GET("/new", controllers.CreatePage)
 
 	// api handler
+	r.POST("/create", controllers.CreateColor)
 	r.POST("/like/:id", controllers.LikeColor)
 	r.DELETE("/like/:id", controllers.UnlikeColor)
 

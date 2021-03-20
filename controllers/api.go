@@ -7,30 +7,47 @@ import (
 )
 
 // LikeColor api
-func LikeColor(cxt *gin.Context) {
-	idStr := cxt.Param("id")
+func LikeColor(ctx *gin.Context) {
+	idStr := ctx.Param("id")
 	id, err := strconv.ParseInt(idStr, 10, 64)
 	if err != nil {
-		cxt.JSON(500, gin.H{
+		ctx.JSON(500, gin.H{
 			"error": true,
 		})
 		return
 	}
 	
 	if err := models.IncrementColorStar(id); err != nil {
-		cxt.JSON(500, gin.H{
+		ctx.JSON(500, gin.H{
 			"error": true,
 		})
 		return
 	}
-	cxt.JSON(200, gin.H{
+	ctx.JSON(200, gin.H{
 		"error": false,
 	})
 }
 
 // UnlikeColor api
-func UnlikeColor(cxt *gin.Context) {
-	cxt.JSON(200, gin.H{
+func UnlikeColor(ctx *gin.Context) {
+	ctx.JSON(200, gin.H{
 		"error": false,
+	})
+}
+
+type NewColor struct {
+	Color []string `json:"color"`
+}
+
+// Create Color
+func CreateColor(ctx *gin.Context) {
+	var newColor NewColor 
+  err := ctx.BindJSON(&newColor)
+	if err != nil {
+		panic(err)
+	}
+	ctx.JSON(200, gin.H{
+		"error": false,
+		"origin": newColor,
 	})
 }
