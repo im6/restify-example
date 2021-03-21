@@ -7,7 +7,7 @@ import (
 )
 
 type Configurations struct {
-	PORT         string	
+	PORT         string
 	SQL_HOST     string
 	SQL_PORT     string
 	SQL_USERNAME string
@@ -17,11 +17,11 @@ type Configurations struct {
 
 var configuration Configurations
 
-func LoadConfiguration()  {
+func LoadConfiguration() {
 	viper.SetConfigName(os.Getenv("ENVNAME"))
 	viper.AddConfigPath("../")
 	viper.SetConfigType("env")
-	
+
 	if err := viper.ReadInConfig(); err != nil {
 		panic(err)
 	}

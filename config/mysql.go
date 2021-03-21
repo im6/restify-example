@@ -11,13 +11,13 @@ var db *sql.DB
 
 func getSqlConn() string {
 	connStr := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
-	  configuration.SQL_USERNAME,
-    configuration.SQL_PASSWORD,
-	  configuration.SQL_HOST,
-	  configuration.SQL_PORT,
-	  configuration.SQL_DATABASE,
-  )
-  return connStr
+		configuration.SQL_USERNAME,
+		configuration.SQL_PASSWORD,
+		configuration.SQL_HOST,
+		configuration.SQL_PORT,
+		configuration.SQL_DATABASE,
+	)
+	return connStr
 }
 
 func InitMySQLConn() error {
@@ -30,6 +30,6 @@ func InitMySQLConn() error {
 	return db.Ping()
 }
 
-func GetDbConnection() (*sql.DB) {
+func GetDbConnection() *sql.DB {
 	return db
 }

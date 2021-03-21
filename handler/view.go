@@ -64,12 +64,11 @@ func createPage(ctx *gin.Context) {
 	})
 }
 
-
 func signInPage(ctx *gin.Context) {
 	var state = uuid.NewString()
 	ctx.HTML(http.StatusOK, "signin", gin.H{
-		"assetName":    "bundle1",
-		"version":      version,
-		"state": state,
+		"assetName": "bundle1",
+		"version":   version,
+		"state":     state,
 	})
 }

@@ -8,7 +8,7 @@ import (
 )
 
 func registerHandler(r *gin.Engine) {
-  // 404 Handler.
+	// 404 Handler.
 	r.NoRoute(func(c *gin.Context) {
 		c.String(http.StatusNotFound, "not found (404)")
 	})
@@ -64,6 +64,6 @@ func createRender() multitemplate.Renderer {
 func Initialize(r *gin.Engine) *gin.Engine {
 	r.Use(gin.Recovery())
 	r.HTMLRender = createRender()
-  registerHandler(r)
+	registerHandler(r)
 	return r
 }

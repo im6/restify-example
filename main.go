@@ -13,6 +13,6 @@ func init() {
 
 func main() {
 	r := gin.Default()
-  handler.Initialize(r)
+	handler.Initialize(r)
 	r.Run(":" + config.GetPort())
 }

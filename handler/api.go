@@ -20,7 +20,7 @@ func handleLikeColor(ctx *gin.Context) {
 		})
 		return
 	}
-	
+
 	if err := models.IncrementColorStar(id); err != nil {
 		ctx.JSON(500, gin.H{
 			"error": true,
@@ -39,13 +39,13 @@ func handleUnlikeColor(ctx *gin.Context) {
 }
 
 func handleCreateColor(ctx *gin.Context) {
-	var newColor NewColor 
-  err := ctx.BindJSON(&newColor)
+	var newColor NewColor
+	err := ctx.BindJSON(&newColor)
 	if err != nil {
 		panic(err)
 	}
 	ctx.JSON(200, gin.H{
-		"error": false,
+		"error":  false,
 		"origin": newColor,
 	})
 }

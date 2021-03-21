@@ -4,7 +4,7 @@ import "testing"
 
 func TestIsHexColor(t *testing.T) {
 	var testCases = []struct {
-		input string
+		input    string
 		expected bool
 	}{
 		{"a3b", true},
