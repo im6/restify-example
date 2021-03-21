@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/im6/vp3/store"
+	"github.com/im6/vp3/config"
 )
 
 // Color is definition
@@ -28,7 +28,7 @@ func GetColors(queryType string) ([]Color, error) {
 		orderByField,
 	)
 	var colors []Color
-	db := store.GetDbConnection()
+	db := config.GetDbConnection()
 	rows, err := db.Query(queryStr)
 	defer rows.Close()
 	if err != nil {
@@ -46,7 +46,7 @@ func GetColors(queryType string) ([]Color, error) {
 }
 
 func GetOneColor(colorId string) (*Color, error) {
-	db := store.GetDbConnection()
+	db := config.GetDbConnection()
 	rows, err := db.Query("SELECT id, color, star FROM colorpk_color WHERE id = ?", colorId)
 	defer rows.Close()
   if rows.Next() {
@@ -62,7 +62,7 @@ func GetOneColor(colorId string) (*Color, error) {
 }
 
 func IncrementColorStar(id int64) (error) {
-	db := store.GetDbConnection()
+	db := config.GetDbConnection()
 	res, err := db.Exec("UPDATE colorpk_color SET star = star + 1 WHERE id = ?", id)
 	if err != nil {
     return err

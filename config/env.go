@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/spf13/viper"
@@ -30,17 +29,6 @@ func LoadConfiguration()  {
 	if err != nil {
 		panic(err)
 	}
-}
-
-func GetSqlConn() string {
-	connStr := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
-		configuration.SQL_USERNAME,
-		configuration.SQL_PASSWORD,
-		configuration.SQL_HOST,
-		configuration.SQL_PORT,
-		configuration.SQL_DATABASE,
-	)
-	return connStr
 }
 
 func GetPort() string {
