@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"github.com/im6/vp3/models"
 )
 
@@ -69,8 +70,10 @@ func CreatePage(ctx *gin.Context) {
 
 // SignInPage view
 func SignInPage(ctx *gin.Context) {
+	var state = uuid.NewString()
 	ctx.HTML(http.StatusOK, "signin", gin.H{
 		"assetName":    "bundle1",
 		"version":      version,
+		"state": state,
 	})
 }

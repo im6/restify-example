@@ -40,7 +40,6 @@ func createMyRender() multitemplate.Renderer {
 }
 
 // InitTemplate initialize server
-func InitTemplate(r *gin.Engine) *gin.Engine {
+func InitTemplate(r *gin.Engine) {
 	r.HTMLRender = createMyRender()
-	return r
 }

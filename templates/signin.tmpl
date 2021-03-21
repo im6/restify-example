@@ -5,19 +5,19 @@
   {{template "header"}}
   <div class="main">
     <div id="signin-box">
-        <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=416488703758-sst4aun48tno84lqt4uqeheo66qeam0m.apps.googleusercontent.com&amp;scope=https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.profile&amp;response_type=code&amp;state=d5a4b3e5-6da5-4e9e-8dca-20c6781762c2&amp;redirect_uri=https://www.colorpk.com/auth/gg">
+        <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=416488703758-sst4aun48tno84lqt4uqeheo66qeam0m.apps.googleusercontent.com&amp;scope=https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.profile&amp;response_type=code&amp;state={{ .state }}&amp;redirect_uri=https://www.colorpk.com/auth/gg">
         <img src="https://dkny.oss-cn-hangzhou.aliyuncs.com/4/gg.svg" title="Google" alt="Google">
         <span>Sign in with Google</span>
         </a>
-        <a href="https://api.weibo.com/oauth2/authorize?client_id=4250708488&amp;scope=follow_app_official_microblog&amp;state=d5a4b3e5-6da5-4e9e-8dca-20c6781762c2&amp;redirect_uri=https://www.colorpk.com/auth/wb">
+        <a href="https://api.weibo.com/oauth2/authorize?client_id=4250708488&amp;scope=follow_app_official_microblog&amp;state={{ .state }}&amp;redirect_uri=https://www.colorpk.com/auth/wb">
         <img src="https://dkny.oss-cn-hangzhou.aliyuncs.com/4/wb.svg" title="微博" alt="微博">
         <span>Sign in with 新浪微博</span>
         </a>
-        <a href="https://github.com/login/oauth/authorize?client_id=00c32c7c4da2081567d8&amp;state=d5a4b3e5-6da5-4e9e-8dca-20c6781762c2&amp;redirect_uri=https://www.colorpk.com/auth/gh">
+        <a href="https://github.com/login/oauth/authorize?client_id=00c32c7c4da2081567d8&amp;state={{ .state }}&amp;redirect_uri=https://www.colorpk.com/auth/gh">
         <img src="https://dkny.oss-cn-hangzhou.aliyuncs.com/4/gh.svg" title="Github" alt="Github">
         <span>Sign in with Github</span>
         </a>
-        <a href="https://www.facebook.com/v3.3/dialog/oauth?client_id=104200920090730&amp;response_type=code&amp;state=d5a4b3e5-6da5-4e9e-8dca-20c6781762c2&amp;redirect_uri=https://www.colorpk.com/auth/fb">
+        <a href="https://www.facebook.com/v3.3/dialog/oauth?client_id=104200920090730&amp;response_type=code&amp;state={{ .state }}&amp;redirect_uri=https://www.colorpk.com/auth/fb">
         <img src="https://dkny.oss-cn-hangzhou.aliyuncs.com/4/fb.svg" title="Facebook" alt="Facebook">
         <span>Sign in with Facebook</span>
         </a>
