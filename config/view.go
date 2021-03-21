@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/multitemplate"
+	"github.com/gin-gonic/gin"
 )
 
 func createMyRender() multitemplate.Renderer {
@@ -23,6 +23,12 @@ func createMyRender() multitemplate.Renderer {
 	r.AddFromFiles(
 		"create",
 		"templates/create.tmpl",
+		"templates/shared/head.tmpl",
+		"templates/shared/header.tmpl",
+	)
+	r.AddFromFiles(
+		"signin",
+		"templates/signin.tmpl",
 		"templates/shared/head.tmpl",
 		"templates/shared/header.tmpl",
 	)

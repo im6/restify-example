@@ -1,8 +1,9 @@
 package models
 
 import (
-	"fmt"
 	"errors"
+	"fmt"
+
 	"github.com/im6/vp3/store"
 )
 
@@ -67,7 +68,7 @@ func IncrementColorStar(id int64) (error) {
     return err
 	}
 	rowNum, err := res.RowsAffected()
-	if rowNum != 1 {
+	if err != nil || rowNum != 1  {
 		return errors.New("invalid multiple update")
 	}
 	return nil

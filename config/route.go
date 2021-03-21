@@ -23,6 +23,7 @@ func InitRoute(r *gin.Engine) *gin.Engine {
 	r.GET("/popular", controllers.PopularPage)
 	r.GET("/color/:id", controllers.OneColorPage)
 	r.GET("/new", controllers.CreatePage)
+	r.GET("/signin", controllers.SignInPage)
 
 	// api handler
 	r.POST("/create", controllers.CreateColor)

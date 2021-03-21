@@ -66,3 +66,11 @@ func CreatePage(ctx *gin.Context) {
 		"defaultValue": ctx.Query("c"),
 	})
 }
+
+// SignInPage view
+func SignInPage(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "signin", gin.H{
+		"assetName":    "bundle1",
+		"version":      version,
+	})
+}
