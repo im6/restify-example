@@ -6,7 +6,9 @@ import (
 	"github.com/im6/vp3/store"
 )
 
-const port = ":3000"
+func init() {
+	config.LoadConfiguration()
+}
 
 func main() {
 	r := gin.Default()
@@ -14,10 +16,10 @@ func main() {
 	config.InitTemplate(r)
 	config.InitRoute(r)
 	
-	err := store.InitMySQLConn()
+	err := store.InitMySQLConn(config.GetSqlConn())
 	if err != nil {
-		panic("mysql connect error")
+		panic(err)
 	}
 
-	r.Run(port)
+	r.Run(":" + config.GetPort())
 }
