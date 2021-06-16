@@ -18,6 +18,9 @@ type Configurations struct {
 var configuration Configurations
 
 func LoadConfiguration() {
+	if len(os.Getenv("ENVNAME")) == 0 {
+		panic("Please specify .env file name")
+	}
 	viper.SetConfigName(os.Getenv("ENVNAME"))
 	viper.AddConfigPath("../")
 	viper.SetConfigType("env")
